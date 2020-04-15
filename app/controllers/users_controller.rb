@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(new_user_params)
+    @user = User.new(user_params)
     if @user.save
       redirect_to login_path
     else
@@ -14,7 +14,8 @@ class UsersController < ApplicationController
 
   private
 
-  def new_user_params
-    params.permit(:last_name, :first_name, :email, :password, :password_confirmation)
+
+  def user_params
+    params.require(:user).permit(:last_name, :first_name, :email, :password, :password_confirmation)
   end
 end
