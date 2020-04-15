@@ -1,5 +1,3 @@
 class StaticPagesController < ApplicationController
-  def top
-    render template: 'static_pages/top'
-  end
+  def top; end
 end
