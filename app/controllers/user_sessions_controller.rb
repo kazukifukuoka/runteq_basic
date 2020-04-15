@@ -8,7 +8,7 @@ class UserSessionsController < ApplicationController
     if @user
       redirect_to root_path
     else
-      redirect_to login_path
+      render :new
     end
   end
 
