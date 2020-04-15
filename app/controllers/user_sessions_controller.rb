@@ -4,8 +4,7 @@ class UserSessionsController < ApplicationController
   end
 
   def create
-    @user = login(params[:email], params[:password])
-    if @user
+    if @user = login(params[:email], params[:password])
       redirect_to root_path
     else
       render :new
@@ -15,5 +14,11 @@ class UserSessionsController < ApplicationController
   def destroy
     logout
     redirect_to root_path
+  end
+
+  private
+
+  def session_params
+    params.require(:user).permit(:email, :password)
   end
 end
