@@ -1,0 +1,4 @@
+ja:
+  defaults:
+    login: 'ログイン'
+    logout: 'ログアウト'
