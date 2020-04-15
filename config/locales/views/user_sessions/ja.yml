@@ -1,0 +1,8 @@
+ja:
+  user_sessions:
+    new:
+      title: 'ログイン'
+      sign_up: '登録ページへ'
+      forget_password: 'パスワードをお忘れの方はこちら'
+      email: 'メールアドレス'
+      password: 'パスワード'
