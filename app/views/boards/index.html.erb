@@ -13,6 +13,6 @@
   <% if @boards.present? %>
     <%= render partial: 'index', locals: { boards: @boards } %>
   <% else %>
-    掲示板がありません
+    <%= t('.no_board') %>
   <% end %>
 </div>

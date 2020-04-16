@@ -8,6 +8,6 @@ class BoardsController < ApplicationController
   private
 
   def authenticate_user
-    redirect_to login_path, danger: 'ログインしてください' unless current_user
+    redirect_to login_path, danger: t('.path_login') unless current_user
   end
 end
