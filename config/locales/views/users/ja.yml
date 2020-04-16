@@ -3,3 +3,6 @@ ja:
     new:
       title: 'ユーザー登録'
       login: 'ログインページへ'
+    create:
+      success: 'ユーザー登録が完了しました'
+      failed: 'ユーザー登録に失敗しました'
