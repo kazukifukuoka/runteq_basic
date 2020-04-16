@@ -2,5 +2,3 @@ ja:
   boards:
     index:
       no_board: '掲示板がありません。'
-      # defaults:
-      #   not_authenticated: 'a'
