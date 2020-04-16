@@ -3,4 +3,5 @@ ja:
     login: 'ログイン'
     logout: 'ログアウト'
     index: '掲示板一覧'
+    not_authenticated: 'ログインしてください'
 

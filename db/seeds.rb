@@ -6,22 +6,21 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.find_or_create_by!(email: 'seed@example.com') do |user|
-  user.password = 'password'
-  user.password_confirmation = 'password'
-  user.last_name = 'seed'
-  user.first_name = '太郎'
-  puts 'ユーザー作成成功'
+10.times do
+  User.create(
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+      email: Faker::Internet.email,
+      password: 'zzzzzz',
+      password_confirmation: 'zzzzzz'
+  )
 end
 
-
-user = User.find_by(email: 'seed@example.com')
-
-10.times do |n|
-  Board.create!(
-    title: Faker::Dessert.variety,
-    body: "本文#{ n + 1}",
-    user_id: user.id
+10.times do |index|
+  Board.create(
+      user: User.offset(rand(User.count)).first,
+      title: "タイトル#{index}",
+      body: "本文#{index}"
   )
 end
 
