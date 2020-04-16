@@ -6,3 +6,8 @@ ja:
       forget_password: 'パスワードをお忘れの方はこちら'
       email: 'メールアドレス'
       password: 'パスワード'
+    create:
+      success: 'ログインしました'
+      failed: 'ログインに失敗しました'
+    destroy:
+      logout: 'ログアウトしました'
