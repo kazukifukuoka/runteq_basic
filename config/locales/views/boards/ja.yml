@@ -2,3 +2,6 @@ ja:
   boards:
     index:
       no_board: '掲示板がありません。'
+    new:
+      title: '掲示板作成'
+      submit: '作成'

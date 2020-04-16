@@ -17,7 +17,7 @@
 
           <div class='dropdown-menu dropdown-menu-right'>
             <%= link_to (t 'defaults.index'), boards_path, class: 'dropdown-item' %>
-            <a class='dropdown-item' href='#'>掲示板作成</a>
+            <%= link_to (t 'defaults.path_new'), new_board_path, class: 'dropdown-item' %>
           </div>
         </li>
 
