@@ -1,7 +1,4 @@
 ja:
-  defaults:
-    login: 'ログイン'
-    logout: 'ログアウト'
   static_pages:
     top:
       title: 'RUNTEQ BOARD APP'
