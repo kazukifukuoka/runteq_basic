@@ -1,5 +1,6 @@
 ja:
   boards:
     index:
-      path_login: 'ログインしてください'
       no_board: '掲示板がありません。'
+      # defaults:
+      #   not_authenticated: 'a'
