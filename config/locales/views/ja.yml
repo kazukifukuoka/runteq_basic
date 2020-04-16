@@ -1,4 +1,5 @@
 ja:
-  defaults:
-    login: 'ログイン'
-    logout: 'ログアウト'
+  users:
+    create:
+      success: 'ユーザー登録が完了しました'
+      failed: 'ユーザー登録に失敗しました'
