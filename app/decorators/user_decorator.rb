@@ -2,7 +2,7 @@ class UserDecorator < Draper::Decorator
   delegate_all
 
   def full_name
-    "#{user.first_name} #{user.last_name}"
+    "#{user.last_name} #{user.first_name}"
   end
   # Define presentation-specific methods here. Helpers are accessed through
   # `helpers` (aka `h`). You can override attributes, for example:
