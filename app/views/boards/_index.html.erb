@@ -20,7 +20,7 @@
                 </div>
                 <ul class="list-inline">
                   <li class="list-inline-item"><%= icon 'far', 'user' %> <%= board.user.decorate.full_name %></li>
-                  <li class="list-inline-item"><%= icon 'far', 'calendar' %>  <%= l board.created_at, format: :basic %></li>
+                  <li class="list-inline-item"><%= icon 'far', 'calendar' %>  <%= l board.created_at, format: :default %></li>
                 </ul>
                 <p class="card-text"><%= board.body %></p>
               </div>

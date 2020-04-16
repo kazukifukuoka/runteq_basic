@@ -3,9 +3,4 @@ ja:
     login: 'ログイン'
     logout: 'ログアウト'
     index: '掲示板一覧'
-  time:
-    formats:
-      default: "%Y/%m/%d %H:%M:%S"
-      long: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
-      short: "%y/%m/%d %H:%M"
-      basic: "%Y/%m/%d %H:%M"
+
