@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-lg-8 offset-lg-2">
         <h1><%= t('.title') %></h1>
-        <%= render partial: 'shared/error_messages', locals: { board: @board} %>
+        <%= render partial: 'shared/error_messages', locals: { obj: @board} %>
         <div class="form-group">
           <%= f.label :title %>
           <%= f.text_field :title, class: 'form-control' %>

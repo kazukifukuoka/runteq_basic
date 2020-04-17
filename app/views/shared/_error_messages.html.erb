@@ -1,8 +1,8 @@
-<% if board.errors.any? %>
+<% if obj.errors.any? %>
   <div class="alert">
-    <h2><%= board.errors.count %>件のエラーがあります。</h2>
+    <h2><%= obj.errors.count %>件のエラーがあります。</h2>
     <ul>
-    <% board.errors.full_messages.each do |msg| %>
+    <% obj.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
     </ul>
