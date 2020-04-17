@@ -1,0 +1,5 @@
+ja:
+  comments:
+    create:
+      success: 'コメントを作成しました'
+      failed: 'コメントを作成に失敗しました'
