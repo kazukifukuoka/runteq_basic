@@ -13,6 +13,10 @@ ja:
       board:
         title: 'タイトル'
         body: '本文'
+        board_image: 'サムネイル'
+  errors:
+    messages:
+      extension_whitelist_error: 'はjpg, jpeg, gif, pngの形式でアップロードしてください'
   time:
     formats:
       default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"

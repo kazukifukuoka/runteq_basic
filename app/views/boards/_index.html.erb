@@ -5,7 +5,11 @@
         <div class="col-sm-12 col-lg-4 mb-3">
           <div id="board-id-#{board.id}">
             <div class="card">
-              <%= image_tag '70017892-c40bbc00-15c7-11ea-8022-9cb7e5d22aa1.png', size: '300×200' %>
+            <% if board.board_image.present? %>
+              <%= image_tag board.board_image.url(:thumb) %>
+            <% else %>
+              <%= image_tag "no_image.png" %>
+            <% end %>
               <div class="card-body">
                 <h4 class="card-title">
                   <%= link_to board.title, '#' %>
