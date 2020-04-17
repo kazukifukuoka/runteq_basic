@@ -5,3 +5,6 @@ ja:
     new:
       title: '掲示板作成'
       submit: '登録する'
+    create:
+      success: '掲示板を作成しました'
+      failed: '掲示板を作成できませんでした'

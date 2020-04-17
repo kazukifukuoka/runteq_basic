@@ -8,12 +8,11 @@ class BoardsController < ApplicationController
   end
 
   def create
-    @board = Board.new(board_params)
-    @board.user_id = current_user.id
+    @board = current_user.boards.build(board_params)
     if @board.save
-      redirect_to boards_path, success: '掲示板を作成しました'
+      redirect_to boards_path, success: t('.success')
     else
-      flash[:danger] = '掲示板を作成できませんでした'
+      flash[:danger] = t('.failed')
       render :new
     end
   end
