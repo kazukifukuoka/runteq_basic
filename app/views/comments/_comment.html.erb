@@ -1,8 +1,8 @@
-<% comments.each do |comment| %>
   <div class="row">
     <div class="col-lg-8 offset-lg-2">
       <table id="js-table-comment" class="table">
-        <tr id="comment-25">
+      <% comments.each do |comment| %>
+        <tr id=<%="comment-#{comment.id}"%>>
           <td style="width: 60px">
             <%= image_tag 'sample.jpg', size: '50x50', class: 'rounded-circle' %>
           </td>
@@ -21,7 +21,7 @@
           <td class="action">
             <ul class="list-inline justify-content-center" style="float: right;">
               <li class="list-inline-item">
-                <a href="#"><i class='fa fa-pencil'></i></a>
+                <a href="#"><i class='fa fa-pen'></i></a>
               </li>
               <li class="list-inline-item">
                 <a href="#">
@@ -32,7 +32,7 @@
           </td>
           <% end %>
         </tr>
+      <% end %>
       </table>
     </div>
   </div>
-  <% end %>
