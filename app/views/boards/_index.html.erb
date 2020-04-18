@@ -3,7 +3,7 @@
       <div class="row">
       <% boards.each do |board| %>
         <div class="col-sm-12 col-lg-4 mb-3">
-          <div id="board-id-#{board.id}">
+          <div id=<%="board-id-#{board.id}"%>>
             <div class="card">
               <%= image_tag board.board_image.url, class: 'card-img-top img-fluid', size: '300x200' %>
               <div class="card-body">
@@ -11,10 +11,10 @@
                   <%= link_to board.title, board_path(board) %>
                 </h4>
                 <div class='mr10 float-right'>
-                  <%= link_to '#', id: 'button-edit-#{board.id}' do %>
+                  <%= link_to '#', id: "button-edit-#{board.id}" do %>
                     <%= icon 'fa', 'pen' %>
                   <% end %>
-                  <%= link_to '#', id: 'button-delete-#{board.id}', method: :delete, data: {confirm: ''} do %>
+                  <%= link_to '#', id: "button-delete-#{board.id}", method: :delete, data: {confirm: ''} do %>
                     <%= icon 'fas', 'trash' %>
                   <% end %>
                 </div>
@@ -28,7 +28,7 @@
                 <p class="card-text"><%= board.body %></p>
               </div>
             </div>
-          </div>
+          </%>
         </div>
         <% end %>
       </div>

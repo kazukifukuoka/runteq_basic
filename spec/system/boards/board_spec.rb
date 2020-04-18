@@ -53,33 +53,33 @@ RSpec.describe '掲示板', type: :system do
       end
     end
 
-  #   describe '掲示板の詳細' do
-  #     context 'ログインしていない場合' do
-  #       it 'ログインページにリダイレクトされること' do
-  #         visit board_path(board)
-  #         expect(current_path).to eq login_path
-  #         expect(page).to have_content 'ログインしてください'
-  #       end
-  #     end
-  #
-  #     context 'ログインしている場合' do
-  #       before do
-  #         board
-  #         login_as_general
-  #       end
-  #       it '掲示板の詳細が表示されること' do
-  #         visit boards_path
-  #         within "#board-id-#{board.id}" do
-  #           click_on board.title
-  #         end
-  #         expect(page).to have_content board.title
-  #         expect(page).to have_content board.user.decorate.full_name
-  #         expect(page).to have_content board.body
-  #         expect(page).to have_content I18n.l(board.created_at, format: :long)
-  #       end
-  #     end
-  #   end
-  #
+    describe '掲示板の詳細' do
+      context 'ログインしていない場合' do
+        it 'ログインページにリダイレクトされること' do
+          visit board_path(board)
+          expect(current_path).to eq login_path
+          expect(page).to have_content 'ログインしてください'
+        end
+      end
+
+      context 'ログインしている場合' do
+        before do
+          board
+          login_as_general
+        end
+        it '掲示板の詳細が表示されること' do
+          visit boards_path
+          within "#board-id-#{board.id}" do
+            click_on board.title
+          end
+          expect(page).to have_content board.title
+          expect(page).to have_content board.user.decorate.full_name
+          expect(page).to have_content board.body
+          expect(page).to have_content I18n.l(board.created_at, format: :long)
+        end
+      end
+    end
+
     describe '掲示板の作成' do
       context 'ログインしていない場合' do
         it 'ログインページにリダイレクトされること' do
@@ -99,6 +99,9 @@ RSpec.describe '掲示板', type: :system do
         it '掲示板が作成できること' do
           fill_in 'タイトル', with: 'テストタイトル'
           fill_in '本文', with: 'テスト本文'
+          file_path = Rails.root.join('spec', 'fixtures', 'example.jpg')
+          attach_file "サムネイル", file_path
+          # プレビュー機能の確認は辛い...
           click_button '登録する'
           # board = Board.last
           expect(current_path).to eq boards_path
@@ -109,9 +112,14 @@ RSpec.describe '掲示板', type: :system do
 
         it '掲示板の作成に失敗すること' do
           fill_in 'タイトル', with: 'テストタイトル'
+          file_path = Rails.root.join('spec', 'fixtures', 'example.txt')
+          attach_file "サムネイル", file_path
           click_button '登録する'
+
           expect(page).to have_content('掲示板を作成できませんでした'), 'フラッシュメッセージ「掲示板を作成できませんでした」が表示されていません'
           expect(page).to have_field('タイトル', with: 'テストタイトル'), '入力したタイトルがフォームに残っていません'
+          expect(page).to have_content('本文を入力してください'), 'エラーメッセージ「本文を入力してください」が表示されていません'
+          expect(page).to have_content('サムネイルは jpg, jpeg, gif, pngの形式でアップロードしてください'), 'エラーメッセージ「サムネイルは jpg, jpeg, gif, pngの形式でアップロードしてください」が表示されていません'
         end
       end
     end
