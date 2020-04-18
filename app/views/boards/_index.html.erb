@@ -3,7 +3,7 @@
       <div class="row">
       <% boards.each do |board| %>
         <div class="col-sm-12 col-lg-4 mb-3">
-          <div id=<%="board-id-#{board.id}"%>>
+          <div id=<%= "board-id-#{board.id}" %>>
             <div class="card">
               <%= image_tag board.board_image.url, class: 'card-img-top img-fluid', size: '300x200' %>
               <div class="card-body">
@@ -28,7 +28,7 @@
                 <p class="card-text"><%= board.body %></p>
               </div>
             </div>
-          </%>
+          </div>
         </div>
         <% end %>
       </div>
