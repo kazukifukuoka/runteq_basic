@@ -23,8 +23,7 @@ class BoardsController < ApplicationController
     @comments = @board.comments.all.order(created_at: :desc)
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @board = current_user.boards.build(board_params)
