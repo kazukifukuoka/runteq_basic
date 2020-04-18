@@ -17,6 +17,12 @@ class BoardsController < ApplicationController
     end
   end
 
+  def show
+    @board = Board.find(params[:id])
+    @comment = @board.comments.build
+    @comments = @board.comments.all.order(created_at: :desc)
+  end
+
   private
 
   def board_params

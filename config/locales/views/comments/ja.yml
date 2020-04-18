@@ -1,0 +1,7 @@
+ja:
+  comments:
+    form:
+      submit: '投稿'
+    create:
+      success: 'コメントを作成しました'
+      failed: 'コメントを作成できませんでした'
