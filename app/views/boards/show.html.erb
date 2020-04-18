@@ -22,56 +22,6 @@
       </article>
     </div>
   </div>
-
-  <!-- コメントフォーム -->
-  <div class="row mb-3">
-    <div class="col-lg-8 offset-lg-2">
-      <%= form_with model: [@board, @comment], url: board_comments_path(@board, @comment), method: :post, local: true do |f| %>
-        <%= f.label :body %>
-        <%= f.text_area :body, class: 'form-control mb-3', rows: 4, placeholder: "コメント"%>
-        <%= f.submit t('.submit'), class: 'btn btn-primary' %>
-      <% end %>
-    </div>
-  </div>
-
-
-  <!-- コメントエリア -->
-<% @comments.each do |comment| %>
-  <div class="row">
-    <div class="col-lg-8 offset-lg-2">
-      <table id="js-table-comment" class="table">
-        <tr id="comment-25">
-          <td style="width: 60px">
-            <img class="rounded-circle" src="sample.jpg" width="50" height="50" />
-          </td>
-          <td>
-            <h3 class="small"><%= comment.user.decorate.full_name %></h3>
-            <div id="js-comment-25">
-              <p><%= comment.body %></p>
-            </div>
-            <div style="display: none;">
-              <textarea class="form-control mb-1">コメントです</textarea>
-              <button class="btn btn-light">キャンセル</button>
-              <button class="btn btn-success">更新</button>
-            </div>
-          </td>
-          <% if current_user.id == comment.user.id %>
-          <td class="action">
-            <ul class="list-inline justify-content-center" style="float: right;">
-              <li class="list-inline-item">
-                <a href="#"><i class='fa fa-pencil'></i></a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-trash"></i>
-                </a>
-              </li>
-            </ul>
-          </td>
-          <% end %>
-        </tr>
-      </table>
-    </div>
-  </div>
-  <% end %>
+  <%= render partial: 'comments/form', locals: { board: @board, comment: @comment } %>
+  <%= render partial: 'comments/comment', locals: { comments: @comments} %>
 </div>
