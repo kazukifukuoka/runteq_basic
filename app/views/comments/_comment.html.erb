@@ -4,7 +4,7 @@
       <table id="js-table-comment" class="table">
         <tr id="comment-25">
           <td style="width: 60px">
-            <%= image_tag 'sample.jpg', size: '50×50', class: 'rounded-circle' %>
+            <%= image_tag 'sample.jpg', size: '50x50', class: 'rounded-circle' %>
           </td>
           <td>
             <h3 class="small"><%= comment.user.decorate.full_name %></h3>
@@ -12,7 +12,7 @@
               <p><%= comment.body %></p>
             </div>
             <div style="display: none;">
-              <textarea class="form-control mb-1">コメントです</textarea>
+              <textarea class="form-control mb-1"><%= comment.body %></textarea>
               <button class="btn btn-light">キャンセル</button>
               <button class="btn btn-success">更新</button>
             </div>
