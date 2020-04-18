@@ -4,4 +4,4 @@ ja:
       submit: '投稿'
     create:
       success: 'コメントを作成しました'
-      failed: 'コメントを作成に失敗しました'
+      failed: 'コメントを作成できませんでした'
