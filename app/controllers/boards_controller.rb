@@ -28,8 +28,8 @@ class BoardsController < ApplicationController
   def edit; end
 
   def update
-    board = current_user.boards.build(board_params)
-    if board.save
+    board = current_user.boards.build
+    if board.update(board_params)
       redirect_to board_path(board), success: t('.success')
     else
       flash[:danger] = t('.failed')
