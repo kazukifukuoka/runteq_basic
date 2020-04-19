@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: 'static_pages#top'
   resources :users, only: %i[new create]
-  resources :boards, only: %i[index new create show] do
+  resources :boards do
     resources :comments, shallow: true
   end
 

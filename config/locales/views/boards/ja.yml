@@ -2,6 +2,8 @@ ja:
   boards:
     index:
       no_board: '掲示板がありません。'
+      title: '掲示板一覧'
+      confim_delete: '削除しますか？'
     new:
       title: '掲示板作成'
       submit: '登録する'
@@ -10,3 +12,13 @@ ja:
       failed: '掲示板を作成できませんでした'
     show:
       title: '掲示板詳細'
+    edit:
+      submit: '更新する'
+    update:
+      success: '掲示板を更新しました'
+      failed: '掲示板を更新できませんでした'
+    destroy:
+      success: '掲示板を削除しました'
+    form:
+      title: '掲示板作成'
+
