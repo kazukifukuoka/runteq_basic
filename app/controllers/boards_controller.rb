@@ -28,7 +28,7 @@ class BoardsController < ApplicationController
   def edit; end
 
   def update
-    board = current_user.boards.build
+    board = Board.find(params[:id])
     if board.update(board_params)
       redirect_to board_path(board), success: t('.success')
     else
@@ -44,7 +44,7 @@ class BoardsController < ApplicationController
   private
 
   def board_params
-    params.require(:board).permit(:title, :body, :board_image)
+    params.require(:board).permit(:title, :body, :board_image, :user_id)
   end
 
   def set_board
