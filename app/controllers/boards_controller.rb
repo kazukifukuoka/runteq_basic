@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-  before_action :set_board, only: %i[show edit destroy]
+  before_action :set_board, only: %i[edit destroy]
 
   def index
     @boards = Board.all.includes(:user).order(created_at: :desc)
@@ -20,6 +20,7 @@ class BoardsController < ApplicationController
   end
 
   def show
+    @board = Board.find(params[:id])
     @comment = @board.comments.build
     @comments = @board.comments.all.order(created_at: :desc)
   end
