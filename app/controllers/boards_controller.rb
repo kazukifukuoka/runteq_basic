@@ -1,5 +1,6 @@
 class BoardsController < ApplicationController
-  before_action :set_user, only: %i[show edit destroy]
+  before_action :set_board, only: %i[show edit destroy]
+
   def index
     @boards = Board.all.includes(:user).order(created_at: :desc)
   end
@@ -45,7 +46,7 @@ class BoardsController < ApplicationController
     params.require(:board).permit(:title, :body, :board_image)
   end
 
-  def set_user
-    @board = Board.find(params[:id])
+  def set_board
+    @board = current_user.boards.find(params[:id])
   end
 end
