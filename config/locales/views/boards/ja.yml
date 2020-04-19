@@ -19,4 +19,6 @@ ja:
       failed: '掲示板を更新できませんでした'
     destroy:
       success: '掲示板を削除しました'
+    form:
+      title: '掲示板作成'
 
