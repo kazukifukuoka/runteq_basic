@@ -1,0 +1,68 @@
+<% content_for(:title, t('.title')) %>
+<div class="container pt-3">
+  <div class="row">
+    <div class="col-lg-10 offset-lg-1">
+      <!-- 検索フォーム -->
+      <form>
+        <div class="input-group mb-3"><input class="form-control" placeholder="検索ワード" type="search"/>
+          <div class="input-group-append"><input type="submit" value="検索" class="btn btn-primary"/></div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- 掲示板一覧 -->
+<% if @bookmarks.present? %>
+<div class="row">
+  <div class="col-12">
+    <div class="row">
+    <% @bookmarks.each do |bookmark| %>
+      <% @boards = Board.where(id: bookmark.board_id) %>
+        <% @boards.each do |board|%>
+          <div class="col-sm-12 col-lg-4 mb-3">
+            <div id=<%= "board-id-#{board.id}" %>>
+              <div class="card">
+                <%= image_tag board.board_image.url, class: 'card-img-top img-fluid', size: '300x200' %>
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <%= link_to board.title, board_path(board) %>
+                  </h4>
+                <ul class="crud-menu-btn list-inline float-right">
+                  <% if current_user.own?(board) %>
+                  <li class='list-inline-item'>
+                    <%= link_to edit_board_path(board), id: "button-edit-#{board.id}" do %>
+                      <%= icon 'fa', 'pen' %>
+                    <% end %>
+                  </li>
+                  <li class='list-inline-item'>
+                    <%= link_to board_path(board), id: "button-delete-#{board.id}", method: :delete, data: {confirm: t('.confim_delete')} do %>
+                      <%= icon 'fas', 'trash' %>
+                    <% end %>
+                  </li>
+                  <% else %>
+                  <li class='list-inline-item'>
+                    <%= render partial: 'bookmarks/bookmark_area', locals: { board: board } %>
+                  </li>
+                  <% end %>
+                </ul>
+                  <ul class="list-inline">
+                    <li class="list-inline-item"><%= icon 'far', 'user' %> <%= board.user.decorate.full_name %></li>
+                    <li class="list-inline-item">
+                      <%= icon 'far', 'calendar' %>
+                      <%= l board.created_at, format: :long %>
+                    </li>
+                  </ul>
+                  <p class="card-text"><%= board.body %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end%>
+    </div>
+  </div>
+</div>
+<% else %>
+  <%= t('.no_bookmark') %>
+<% end %>
+</div>
+

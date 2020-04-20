@@ -6,3 +6,4 @@ ja:
     index: '掲示板一覧'
     not_authenticated: 'ログインしてください'
     path_new: '掲示板作成'
+    bookmark: 'ブックマーク一覧'

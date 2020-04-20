@@ -22,6 +22,10 @@
                   <%= icon 'fas', 'trash' %>
                 <% end %>
               </li>
+              <% else %>
+              <li class='list-inline-item'>
+                <%= render partial: 'bookmarks/bookmark_area', locals: { board: board } %>
+              </li>
               <% end %>
             </ul>
               <ul class="list-inline">
