@@ -2,6 +2,8 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
   has_many :boards, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
+  has_many :liked_boards, through: :bookmarks, source: :board
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
@@ -12,5 +14,9 @@ class User < ApplicationRecord
 
   def own?(object)
     object.user_id == id
+  end
+
+  def already_liked?(board)
+    self.bookmarks.exists?(board_id: board.id)
   end
 end

@@ -1,0 +1,5 @@
+<% if bookmark = Bookmark.find_by(user_id: current_user.id, board_id: board.id)  %>
+  <%= render partial: 'bookmarks/bookmark', locals: { board: board, bookmark: bookmark} %>
+<% else %>
+  <%= render partial: 'bookmarks/unbookmark', locals: { board: board } %>
+<% end %>
