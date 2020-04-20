@@ -21,4 +21,6 @@ ja:
       success: '掲示板を削除しました'
     form:
       title: '掲示板作成'
+    bookmarks:
+      no_bookmark: 'ブックマーク中の掲示板がありません'
 
