@@ -41,6 +41,10 @@ class BoardsController < ApplicationController
     redirect_to boards_path, success: t('.success') if @board.destroy!
   end
 
+  def bookmarks
+    @bookmarks = Bookmark.where(user_id: current_user.id)
+  end
+
   private
 
   def board_params

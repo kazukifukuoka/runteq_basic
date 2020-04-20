@@ -15,8 +15,4 @@ class User < ApplicationRecord
   def own?(object)
     object.user_id == id
   end
-
-  def already_liked?(board)
-    self.bookmarks.exists?(board_id: board.id)
-  end
 end
