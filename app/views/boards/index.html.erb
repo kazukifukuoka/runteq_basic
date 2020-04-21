@@ -11,9 +11,15 @@
     </div>
   </div>
   <!-- 掲示板一覧 -->
-  <% if @boards.present? %>
-    <%= render partial: 'index', locals: { boards: @boards } %>
-  <% else %>
-    <%= t('.no_board') %>
-  <% end %>
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <% if @boards.present? %>
+          <%= render @boards %>
+        <% else %>
+          <%= t('.no_board') %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
