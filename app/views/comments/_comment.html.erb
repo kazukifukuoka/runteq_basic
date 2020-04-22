@@ -1,7 +1,21 @@
-  <div class="row">
-    <div class="col-lg-8 offset-lg-2">
-      <table id="js-table-comment" class="table">
-        <%= render partial: 'comments/comments', locals: { comments: comments } %>
-      </table>
+<tr id=<%="comment-#{comment.id}"%>>
+  <td style="width: 60px">
+    <%= image_tag 'sample.jpg', size: '50x50', class: 'rounded-circle' %>
+  </td>
+  <td>
+    <h3 class="small"><%= comment.user.decorate.full_name %></h3>
+    <div id="js-comment-<%= comment.id %>">
+      <p><%= simple_format(comment.body) %></p>
     </div>
-  </div>
+    <div style="display: none;" id="js-textarea-comment-box-<%= comment.id %>">
+      <p class="error_messages text-danger">コメントを入力してください</p>
+      <textarea class="form-control mb-1" id="js-textarea-comment-<%= comment.id %>"><%= comment.body %></textarea>
+    <div id="js-comment-button-<%= comment.id %>" style="desplay: none;">
+      <button data-cancel-id=<%= comment.id %> class="btn btn-light comment-cancel-button">キャンセル</button>
+      <button data-update-id=<%= comment.id %> class="btn btn-success comment-update-button">更新</button>
+    </div>
+  </td>
+  <% if current_user.own?(comment) %>
+    <%= render partial: 'comments/crud_menus', locals: { comment: comment } %>
+  <% end %>
+</tr>
