@@ -1,4 +1,3 @@
-
 $(function() {
   $(document).on("click", ".js-edit-comment-button", function() {
     const commentId = $(this).data("comment-id");
@@ -11,9 +10,9 @@ $(function() {
     commentError.hide();
     commentTextArea.show();
   });
-});
 
-$(function() {
+
+
   $(document).on("click", ".comment-cancel-button", function() {
     const commentId = $(this).data("cancel-id");
     const comment = $("#js-comment-" + commentId);
@@ -22,9 +21,9 @@ $(function() {
     comment.show();
     commentTextArea.hide();
   });
-});
 
-$(function() {
+
+
   $(document).on("click", ".comment-update-button", function() {
     const commentId = $(this).data("update-id");
     const textField = $("#js-textarea-comment-" + commentId);

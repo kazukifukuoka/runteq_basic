@@ -8,7 +8,7 @@
 
     </li>
     <li class="list-inline-item">
-      <%= link_to comment_path(comment), method: :delete, remote: true do %>
+      <%= link_to comment_path(comment), method: :delete, remote: true, data: { confirm: '削除しますか？' } do %>
         <%= icon 'fa', 'trash' %>
       <% end %>
     </li>

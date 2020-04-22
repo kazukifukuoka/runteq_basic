@@ -8,21 +8,21 @@ RSpec.describe 'ブックマーク', type: :system do
     board
   end
 
-  it 'ブックマークができること' do
+  it 'ブックマークができること', js: true do
     login_as_general
     visit boards_path
     find("#js-bookmark-button-for-board-#{board.id}").click
-    expect(current_path).to eq boards_path
-    expect(page).to have_content('ブックマークしました'), 'フラッシュメッセージ「ブックマークしました」が表示されていません'
+    # ボタンが切り替わること
+    expect(page).to have_css("#js-bookmark-button-for-board-#{board.id}[data-method='delete']"), 'ブックマークボタンを押した後にボタンが切り替わっていません'
   end
 
-  it 'ブックマークを外せること' do
+  it 'ブックマークを外せること', js: true do
     login_as_general
     visit boards_path
     find("#js-bookmark-button-for-board-#{board.id}").click
     # ブックマークを外す
     find("#js-bookmark-button-for-board-#{board.id}").click
-    expect(current_path).to eq boards_path
-    expect(page).to have_content('ブックマークを外しました'), 'フラッシュメッセージ「ブイックマークを外しました」が表示されていません'
+    # ボタンが切り替わること
+    expect(page).to have_css("#js-bookmark-button-for-board-#{board.id}[data-method='post']"), 'ブックマークを解除した後にボタンが切り替わっていません'
   end
 end
