@@ -8,7 +8,7 @@
       <p><%= simple_format(comment.body) %></p>
     </div>
     <div style="display: none;" id="js-textarea-comment-box-<%= comment.id %>">
-      <p class="error_messages text-danger">コメントを入力してください</p>
+      <p id="js-error_messages-<%= comment.id %>" class="text-danger"></p>
       <textarea class="form-control mb-1" id="js-textarea-comment-<%= comment.id %>"><%= comment.body %></textarea>
     <div id="js-comment-button-<%= comment.id %>" style="desplay: none;">
       <button data-cancel-id=<%= comment.id %> class="btn btn-light comment-cancel-button">キャンセル</button>

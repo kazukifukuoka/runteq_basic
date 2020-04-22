@@ -4,9 +4,10 @@ $(function() {
     const commentId = $(this).data("comment-id");
     const comment = $("#js-comment-" + commentId);
     const commentTextArea = $("#js-textarea-comment-box-" + commentId);
-    const commentError = $(".error_messages")
+    const commentError = $("#js-error_messages-" + commentId);
 
     comment.hide();
+
     commentError.hide();
     commentTextArea.show();
   });
@@ -45,7 +46,9 @@ $(function() {
       comment.text(data.body);
       commentTextArea.hide();
     }).fail(function(data) {
-      const commentError = $(".error_messages")
+      const commentError = $("#js-error_messages-" + commentId);
+
+      commentError.text("コメントを入力してください");
       commentError.show();
     })
   });
