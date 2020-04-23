@@ -1,10 +1,10 @@
 $(function() {
   $(document).on("click", ".js-edit-comment-button", function() {
+    debugger
     const commentId = $(this).data("comment-id");
     const comment = $("#js-comment-" + commentId);
     const commentTextArea = $("#js-textarea-comment-box-" + commentId);
     const commentError = $(".error_messages");
-
     comment.hide();
     commentTextArea.show();
     commentError.hide();

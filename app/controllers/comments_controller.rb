@@ -8,15 +8,18 @@ class CommentsController < ApplicationController
       # redirect_to board_path(@board), success: t('.success')
     else
       @comments = @board.comments.all.order(created_at: :desc)
-      render 'error_ajax.js.erb'
+      render 'error_create.js.erb'
       # render template: 'boards/show'
     end
   end
 
   def update
     @comment = current_user.comments.find(params[:id])
-    @comment.update!(comment_params)
-    render json: @comment
+    if @comment.update(comment_params)
+      render json: @comment
+    else
+      render 'error_update.js.erb'
+    end
   end
 
   def destroy
