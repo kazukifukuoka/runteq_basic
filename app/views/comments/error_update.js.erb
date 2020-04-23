@@ -1,1 +1,2 @@
+$('#js-textarea-comment-box-<%= @comment.id %> .error_messages').remove();
 $('#js-textarea-comment-box-<%= @comment.id %>').prepend('<p class="error_messages text-danger">コメントを入力してください</p>');

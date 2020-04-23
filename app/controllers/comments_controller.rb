@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
     if @comment.update(comment_params)
       render json: @comment
     else
-      render 'error_update.js.erb'
+      render 'error_update.js.erb', status: 400
     end
   end
 
