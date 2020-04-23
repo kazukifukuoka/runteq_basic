@@ -3,15 +3,12 @@ $(function() {
     const commentId = $(this).data("comment-id");
     const comment = $("#js-comment-" + commentId);
     const commentTextArea = $("#js-textarea-comment-box-" + commentId);
-    const commentError = $("#js-error_messages-" + commentId);
+    const commentError = $(".error_messages");
 
     comment.hide();
-
-    commentError.hide();
     commentTextArea.show();
+    commentError.hide();
   });
-
-
 
   $(document).on("click", ".comment-cancel-button", function() {
     const commentId = $(this).data("cancel-id");
@@ -21,8 +18,6 @@ $(function() {
     comment.show();
     commentTextArea.hide();
   });
-
-
 
   $(document).on("click", ".comment-update-button", function() {
     const commentId = $(this).data("update-id");
@@ -45,9 +40,8 @@ $(function() {
       comment.text(data.body);
       commentTextArea.hide();
     }).fail(function(data) {
-      const commentError = $("#js-error_messages-" + commentId);
+      const commentError = $(".error_messages");
 
-      commentError.text("コメントを入力してください");
       commentError.show();
     })
   });

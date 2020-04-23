@@ -5,10 +5,10 @@
   <td>
     <h3 class="small"><%= comment.user.decorate.full_name %></h3>
     <div id="js-comment-<%= comment.id %>">
-      <p><%= simple_format(comment.body) %></p>
+      <%= simple_format(comment.body) %>
     </div>
     <div style="display: none;" id="js-textarea-comment-box-<%= comment.id %>">
-      <p id="js-error_messages-<%= comment.id %>" class="text-danger"></p>
+      <p class="error_messages text-danger">コメントを入力してください</p>
       <textarea class="form-control mb-1" id="js-textarea-comment-<%= comment.id %>"><%= comment.body %></textarea>
     <div id="js-comment-button-<%= comment.id %>" style="desplay: none;">
       <button data-cancel-id=<%= comment.id %> class="btn btn-light comment-cancel-button">キャンセル</button>
