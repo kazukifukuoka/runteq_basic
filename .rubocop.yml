@@ -74,3 +74,6 @@ Style/HashTransformValues:
 
 Bundler/OrderedGems:
   Enabled: false
+
+  Rails/HttpStatus:
+    Enabled: false
