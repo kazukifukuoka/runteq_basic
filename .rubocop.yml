@@ -74,3 +74,4 @@ Style/HashTransformValues:
 
 Bundler/OrderedGems:
   Enabled: false
+

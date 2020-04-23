@@ -1,21 +1,7 @@
-<% comments.each do |comment| %>
-        <tr id=<%="comment-#{comment.id}"%>>
-          <td style="width: 60px">
-            <%= image_tag 'sample.jpg', size: '50x50', class: 'rounded-circle' %>
-          </td>
-          <td>
-            <h3 class="small"><%= comment.user.decorate.full_name %></h3>
-            <div id=<%= "js-comment-#{comment.id}" %>>
-              <p><%= simple_format(comment.body) %></p>
-            </div>
-            <div style="display: none;">
-              <textarea class="form-control mb-1"><%= comment.body %></textarea>
-              <button class="btn btn-light">キャンセル</button>
-              <button class="btn btn-success">更新</button>
-            </div>
-          </td>
-          <% if current_user.own?(comment) %>
-            <%= render partial: 'comments/crud_menus'%>
-          <% end %>
-        </tr>
-      <% end %>
+<div class="row">
+  <div class="col-lg-8 offset-lg-2">
+    <table id="js-table-comment" class="table">
+      <%= render comments %>
+    </table>
+  </div>
+</div>
