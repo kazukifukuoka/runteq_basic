@@ -18,7 +18,7 @@ Board.destroy_all
   )
 end
 
-21.times do |index|
+19.times do |index|
   Board.create(
       user: User.offset(rand(User.count)).first,
       title: "タイトル#{index + 1}",
