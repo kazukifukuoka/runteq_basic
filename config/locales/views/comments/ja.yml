@@ -5,3 +5,5 @@ ja:
     create:
       success: 'コメントを作成しました'
       failed: 'コメントを作成できませんでした'
+    crud_menus:
+      confirm: '削除しますか？'

@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  protect_from_forgery except: :update
+
   def create
     @board = Board.find(params[:board_id])
     @comment = @board.comments.build(comment_params)
