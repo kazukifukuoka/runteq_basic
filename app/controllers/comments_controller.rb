@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-
   def create
     @board = Board.find(params[:board_id])
     @comment = @board.comments.build(comment_params)

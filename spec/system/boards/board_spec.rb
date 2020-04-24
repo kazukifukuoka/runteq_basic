@@ -10,7 +10,7 @@ RSpec.describe '掲示板', type: :system do
         it 'ログインページにリダイレクトされること' do
           visit boards_path
           expect(current_path).to eq login_path
-          expect(page).to have_content('ログインしてください'), 'フラッシュメッセージ「ログインしてください」が表示されていません'
+          expect(page).to have_content 'ログインしてください'
         end
       end
 
@@ -19,14 +19,14 @@ RSpec.describe '掲示板', type: :system do
           login_as_general
           click_on('掲示板')
           click_on('掲示板一覧')
-          expect(current_path).to eq(boards_path), 'ヘッダーのリンクから掲示板一覧画面へ遷移できません'
+          expect(current_path).to eq boards_path
         end
 
         context '掲示板が一件もない場合' do
           it '何もない旨のメッセージが表示されること' do
             login_as_general
             visit boards_path
-            expect(page).to have_content('掲示板がありません。'), '掲示板が一件もない場合、「掲示板がありません」というメッセージが表示されていません'
+            expect(page).to have_content '掲示板がありません。'
           end
         end
 
@@ -35,20 +35,20 @@ RSpec.describe '掲示板', type: :system do
             board
             login_as_general
             visit boards_path
-            expect(page).to have_content(board.title), '掲示板一覧画面に掲示板のタイトルが表示されていません'
-            expect(page).to have_content(board.user.decorate.full_name), '掲示板一覧画面に投稿者のフルネームが表示されていません'
-            expect(page).to have_content(board.body), '掲示板一覧画面に掲示板の本文が表示されていません'
-            expect(page).to have_content(I18n.l(board.created_at, format: :long)), '掲示板一覧画面に掲示板の投稿日時が正しいフォーマットで表示されていません'
+            expect(page).to have_content board.title
+            expect(page).to have_content board.user.decorate.full_name
+            expect(page).to have_content board.body
+            expect(page).to have_content I18n.l(board.created_at, format: :long)
           end
 
-          # context '21件以上ある場合' do
-          #   let!(:boards) { create_list(:board, 21) }
-          #   it 'ページングが表示されること' do
-          #     login_as_general
-          #     visit boards_path
-          #     expect(page).to have_selector('.pagination')
-          #   end
-          # end
+          context '21件以上ある場合' do
+            let!(:boards) { create_list(:board, 21) }
+            it 'ページングが表示されること' do
+              login_as_general
+              visit boards_path
+              expect(page).to have_selector('.pagination')
+            end
+          end
         end
       end
     end
@@ -58,7 +58,7 @@ RSpec.describe '掲示板', type: :system do
         it 'ログインページにリダイレクトされること' do
           visit board_path(board)
           expect(current_path).to eq login_path
-          expect(page).to have_content('ログインしてください'), 'フラッシュメッセージ「ログインしてください」が表示されていません'
+          expect(page).to have_content 'ログインしてください'
         end
       end
 
@@ -72,10 +72,10 @@ RSpec.describe '掲示板', type: :system do
           within "#board-id-#{board.id}" do
             click_on board.title
           end
-          expect(page).to have_content(board.title), '掲示板一覧画面に掲示板のタイトルが表示されていません'
-          expect(page).to have_content(board.user.decorate.full_name), '掲示板一覧画面に投稿者のフルネームが表示されていません'
-          expect(page).to have_content(board.body), '掲示板一覧画面に掲示板の本文が表示されていません'
-          expect(page).to have_content(I18n.l(board.created_at, format: :long)), '掲示板一覧画面に掲示板の投稿日時が正しいフォーマットで表示されていません'
+          expect(page).to have_content board.title
+          expect(page).to have_content board.user.decorate.full_name
+          expect(page).to have_content board.body
+          expect(page).to have_content I18n.l(board.created_at, format: :long)
         end
       end
     end
@@ -85,7 +85,7 @@ RSpec.describe '掲示板', type: :system do
         it 'ログインページにリダイレクトされること' do
           visit new_board_path
           expect(current_path).to eq login_path
-          expect(page).to have_content('ログインしてください'), 'フラッシュメッセージ「ログインしてください」が表示されていません'
+          expect(page).to have_content 'ログインしてください'
         end
       end
 
@@ -105,9 +105,9 @@ RSpec.describe '掲示板', type: :system do
           click_button '登録する'
           # board = Board.last
           expect(current_path).to eq boards_path
-          expect(page).to have_content('掲示板を作成しました'), 'フラッシュメッセージ「掲示板を作成しました」が表示されていません'
-          expect(page).to have_content('テストタイトル'), '作成した掲示板のタイトルが表示されていません'
-          expect(page).to have_content('テスト本文'), '作成した掲示板の本文が表示されていません'
+          expect(page).to have_content '掲示板を作成しました'
+          expect(page).to have_content 'テストタイトル'
+          expect(page).to have_content 'テスト本文'
         end
 
         it '掲示板の作成に失敗すること' do
@@ -115,11 +115,13 @@ RSpec.describe '掲示板', type: :system do
           file_path = Rails.root.join('spec', 'fixtures', 'example.txt')
           attach_file "サムネイル", file_path
           click_button '登録する'
-
-          expect(page).to have_content('掲示板を作成できませんでした'), 'フラッシュメッセージ「掲示板を作成できませんでした」が表示されていません'
-          expect(page).to have_field('タイトル', with: 'テストタイトル'), '入力したタイトルがフォームに残っていません'
-          expect(page).to have_content('本文を入力してください'), 'エラーメッセージ「本文を入力してください」が表示されていません'
-          # expect(page).to have_content('サムネイルは jpg, jpeg, gif, pngの形式でアップロードしてください'), 'エラーメッセージ「サムネイルは jpg, jpeg, gif, pngの形式でアップロードしてください」が表示されていません'
+          expect(page).to have_content '掲示板を作成できませんでした'
+          # 入力した値が残っていること
+          expect(page).to have_field('タイトル', with: 'テストタイトル')
+          # 個別のエラーメッセージが表示されること
+          expect(page).to have_content '本文を入力してください'
+          # 拡張子の制限チェック
+          expect(page).to have_content 'サムネイルは jpg, jpeg, gif, pngの形式でアップロードしてください'
         end
       end
     end
@@ -148,16 +150,16 @@ RSpec.describe '掲示板', type: :system do
             fill_in '本文', with: '編集後テスト本文'
             click_button '更新する'
             expect(current_path).to eq board_path(board)
-            expect(page).to have_content('掲示板を更新しました'), 'フラッシュメッセージ「掲示板を更新しました」が表示されていません'
-            expect(page).to have_content('テストタイトル'), '更新後のタイトルが表示されていません'
-            expect(page).to have_content('テスト本文'), '更新後の本文が表示されていません'
+            expect(page).to have_content '掲示板を更新しました'
+            expect(page).to have_content 'テストタイトル'
+            expect(page).to have_content 'テスト本文'
           end
 
           it '掲示板の作成に失敗すること' do
             fill_in 'タイトル', with: '編集後テストタイトル'
             fill_in '本文', with: ''
             click_button '更新する'
-            expect(page).to have_content('掲示板を更新できませんでした'), 'フラッシュメッセージ「掲示板を更新できませんでした」が表示されていません'
+            expect(page).to have_content '掲示板を更新できませんでした'
           end
         end
 
@@ -165,7 +167,7 @@ RSpec.describe '掲示板', type: :system do
           it '編集ボタンが表示されないこと' do
             login_as_general
             visit boards_path
-            expect(page).not_to have_selector("#button-edit-#{board.id}"), '他人の掲示板に対して編集ボタンが表示されています'
+            expect(page).not_to have_selector("#button-edit-#{board.id}")
           end
         end
       end
@@ -181,7 +183,7 @@ RSpec.describe '掲示板', type: :system do
           visit boards_path
           page.accept_confirm { find("#button-delete-#{board.id}").click }
           expect(current_path).to eq boards_path
-          expect(page).to have_content('掲示板を削除しました'), 'フラッシュメッセージ「掲示板を削除しました」が表示されていません'
+          expect(page).to have_content '掲示板を削除しました'
         end
       end
 
@@ -189,7 +191,7 @@ RSpec.describe '掲示板', type: :system do
         it '削除ボタンが表示されないこと' do
           login_as_general
           visit boards_path
-          expect(page).not_to have_selector("#button-delete-#{board.id}"), '他人の掲示板に対して削除ボタンが表示されています'
+          expect(page).not_to have_selector("#button-delete-#{board.id}")
         end
       end
     end
@@ -217,6 +219,18 @@ RSpec.describe '掲示板', type: :system do
           click_on 'ブックマーク一覧'
           expect(current_path).to eq bookmarks_boards_path
           expect(page).to have_content board.title
+        end
+      end
+
+      context '21件以上ある場合' do
+        let!(:boards) { create_list(:board, 21) }
+        it 'ページングが表示されること' do
+          boards.each do |board|
+            Bookmark.create(user: user, board: board)
+          end
+          login_as_user user
+          visit bookmarks_boards_path
+          expect(page).to have_selector('.pagination')
         end
       end
     end
