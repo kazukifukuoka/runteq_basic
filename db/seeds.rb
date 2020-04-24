@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+User.destroy_all
+Board.destroy_all
 10.times do
   User.create(
       first_name: Faker::Name.first_name,
@@ -16,7 +18,7 @@
   )
 end
 
-10.times do |index|
+19.times do |index|
   Board.create(
       user: User.offset(rand(User.count)).first,
       title: "タイトル#{index + 1}",

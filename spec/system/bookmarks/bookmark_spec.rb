@@ -13,7 +13,7 @@ RSpec.describe 'ブックマーク', type: :system do
     visit boards_path
     find("#js-bookmark-button-for-board-#{board.id}").click
     # ボタンが切り替わること
-    expect(page).to have_css("#js-bookmark-button-for-board-#{board.id}[data-method='delete']"), 'ブックマークボタンを押した後にボタンが切り替わっていません'
+    expect(page).to have_css("#js-bookmark-button-for-board-#{board.id}[data-method='delete']")
   end
 
   it 'ブックマークを外せること', js: true do
@@ -23,6 +23,6 @@ RSpec.describe 'ブックマーク', type: :system do
     # ブックマークを外す
     find("#js-bookmark-button-for-board-#{board.id}").click
     # ボタンが切り替わること
-    expect(page).to have_css("#js-bookmark-button-for-board-#{board.id}[data-method='post']"), 'ブックマークを解除した後にボタンが切り替わっていません'
+    expect(page).to have_css("#js-bookmark-button-for-board-#{board.id}[data-method='post']")
   end
 end
