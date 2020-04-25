@@ -1,0 +1,32 @@
+<% content_for(:title, t('.title')) %>
+<div class="container pt-3">
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <%= form_with model: @user, url: profile_path, local: true do |f| %>
+        <h1><%= t('.title') %></h1>
+        <%= render partial: 'shared/error_messages', locals: { obj: @user} %>
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.text_field :email, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :avatar, for: :img %>
+          <%= f.file_field :avatar, id: :img, class: 'form-control', accept: "image/jpg,image/gif,image/jpeg,image/png" %>
+        </div>
+        <div class="form-group">
+          <%= image_tag @user.avatar.url, id: :img_prev, class: 'rounded-circle', size: '100x100' %>
+        </div>
+        <%= f.submit '更新する', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+

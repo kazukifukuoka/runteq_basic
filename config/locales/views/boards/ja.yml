@@ -24,4 +24,7 @@ ja:
     bookmarks:
       no_bookmark: 'ブックマーク中の掲示板がありません'
       title: 'ブックマーク一覧'
+    search_form:
+      placeholder: '検索ワード'
+      search: '検索'
 
