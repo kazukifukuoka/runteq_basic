@@ -1,0 +1,13 @@
+ja:
+  profiles:
+    show:
+      title: 'プロフィール'
+      button: '編集'
+      email: 'メールアドレス'
+      full_name: '氏名'
+      avatar: 'アバター'
+    edit:
+      title: 'プロフィール編集'
+    update:
+      success: 'ユーザーを更新しました'
+      failed: 'ユーザーを更新できませんでした'
