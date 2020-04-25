@@ -9,5 +9,5 @@ ja:
     edit:
       title: 'プロフィール編集'
     update:
-      success: 'プロフィールを更新しました'
-      failed: 'プロフィールの更新に失敗しました'
+      success: 'ユーザーを更新しました'
+      failed: 'ユーザーを更新できませんでした'
