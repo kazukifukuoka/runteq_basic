@@ -75,3 +75,5 @@ Style/HashTransformValues:
 Bundler/OrderedGems:
   Enabled: false
 
+Rails/DynamicFindBy:
+  Enabled: false
