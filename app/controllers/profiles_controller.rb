@@ -1,12 +1,10 @@
 class ProfilesController < ApplicationController
+  before_action :set_user, only: %i[edit update]
   def show; end
 
-  def edit
-    @user = current_user
-  end
+  def edit; end
 
   def update
-    @user = current_user
     if @user.update(user_params)
       redirect_to profile_path, success: t('.success')
     else
@@ -19,5 +17,9 @@ class ProfilesController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :last_name, :first_name, :avatar)
+  end
+
+  def set_user
+    @user = User.find(current_user.id)
   end
 end
