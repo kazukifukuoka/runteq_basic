@@ -1,0 +1,6 @@
+ja:
+  password_resets:
+    new:
+      title: 'パスワードリセット申請'
+    edit:
+      title: 'パスワードリセット'
