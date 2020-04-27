@@ -2,5 +2,6 @@ ja:
   password_resets:
     new:
       title: 'パスワードリセット申請'
+      email: 'メールドレス'
     edit:
       title: 'パスワードリセット'
