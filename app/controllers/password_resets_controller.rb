@@ -1,16 +1,16 @@
 class PasswordResetsController < ApplicationController
   skip_before_action :require_login
   def create
-    @user = User.find_by_email(params[:email])
+    @user = User.find_by_email(params[:email]) # rubocop disable Rails/DynamicFindBy
     @user&.deliver_reset_password_instructions!
-    redirect_to root_path, success: 'パスワードのリセット手順を送信しました'
+    redirect_to root_path, success: 'パスワードリセット手順を送信しました'
   end
 
   def edit
     @token = params[:id]
     @user = User.load_from_reset_password_token(params[:id])
 
-    return unless @user.blank?
+    return if @user.present?
   end
 
   def update
