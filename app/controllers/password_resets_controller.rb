@@ -3,14 +3,14 @@ class PasswordResetsController < ApplicationController
   def create
     @user = User.find_by_email(params[:email])
     @user&.deliver_reset_password_instructions!
-    redirect_to root_path, success: 'パスワードのリセット手順を送信しました'
+    redirect_to root_path, success: 'パスワードリセット手順を送信しました'
   end
 
   def edit
     @token = params[:id]
     @user = User.load_from_reset_password_token(params[:id])
 
-    return unless @user.blank?
+    return if @user.present?
   end
 
   def update
@@ -23,9 +23,9 @@ class PasswordResetsController < ApplicationController
     end
     @user.password_confirmation = params[:user][:password_confirmation]
     if @user.change_password!(params[:user][:password])
-      redirect_to root_path, success: 'パスワードをリセットしました'
+      redirect_to login_path, success: 'パスワードを変更しました'
     else
-      flash[:danger] = 'aaaaa'
+      flash[:danger] = 'パスワードリセットに失敗しました'
       render :edit
     end
   end
