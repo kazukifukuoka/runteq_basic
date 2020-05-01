@@ -2,7 +2,7 @@ class Admin::UserSessionsController < Admin::BaseController
   skip_before_action :require_login
   layout 'admin_login'
   def new
-    # redirect_to root_path, warning: '権限がありません' if current_user.general?
+    redirect_to root_path, warning: '権限がありません' if current_user&.general?
   end
 
   def create
