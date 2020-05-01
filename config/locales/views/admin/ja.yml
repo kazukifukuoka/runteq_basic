@@ -1,0 +1,16 @@
+ja:
+  admin:
+    user_sessions:
+      new:
+        title: 'ログイン'
+        submit_btn: 'ログイン'
+        email: 'メールアドレス'
+        password: 'パスワード'
+      create:
+        success: 'ログインしました'
+        warning: 'ログインに失敗しました'
+      destroy:
+        success: 'ログアウトしました'
+    dashboards:
+      index:
+        title: 'ダッシュボード'

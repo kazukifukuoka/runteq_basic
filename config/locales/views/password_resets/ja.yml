@@ -5,3 +5,9 @@ ja:
       email: 'メールアドレス'
     edit:
       title: 'パスワードリセット'
+      submit_btn: '更新する'
+    create:
+      success: 'パスワードリセット手順を送信しました'
+    update:
+      success: 'パスワードを変更しました'
+      failed: 'パスワードリセットに失敗しました'

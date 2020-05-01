@@ -75,5 +75,5 @@ Style/HashTransformValues:
 Bundler/OrderedGems:
   Enabled: false
 
-Rails/DynamicFindBy:
+Rails/UniqueValidationWithoutIndex:
   Enabled: false
