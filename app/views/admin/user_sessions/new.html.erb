@@ -1,12 +1,13 @@
+<% content_for(:title, t('.title')) %>
 <div>
   <div class="login-box">
     <div class="login-logo">
-      <h1>ログイン</h1>
+      <h1><%= t('.title') %></h1>
     </div>
     <div class="card">
       <div class="card-body login-card-body">
-        <%= form_with model: @user, url: admin_login_path, method: :post, local: true do |f| %>
-          <%= f.label :email %>
+        <%= form_with url: admin_login_path, method: :post, local: true do |f| %>
+          <%= f.label :email, (t '.email') %>
           <div class="input-group mb-3">
             <%= f.text_field :email, class: 'form-control', placeholder: 'Email' %>
             <div class="input-group-append">
@@ -15,7 +16,7 @@
               </div>
             </div>
           </div>
-          <%= f.label :password %>
+          <%= f.label :password, (t '.password') %>
           <div class="input-group mb-3">
             <%= f.password_field :password, class: 'form-control', placeholder: 'Password' %>
             <div class="input-group-append">
@@ -26,7 +27,7 @@
           </div>
           <div class="row">
             <div class="col-12">
-              <%= f.submit 'ログイン', class: 'btn btn-block btn-primary' %>
+              <%= f.submit t('.submit_btn'), class: 'btn btn-block btn-primary' %>
             </div>
           </div>
         <% end %>

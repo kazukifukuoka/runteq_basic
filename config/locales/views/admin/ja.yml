@@ -1,6 +1,11 @@
 ja:
   admin:
     user_sessions:
+      new:
+        title: 'ログイン'
+        submit_btn: 'ログイン'
+        email: 'メールアドレス'
+        password: 'パスワード'
       create:
         success: 'ログインしました'
         warning: '権限がありません'
