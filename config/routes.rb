@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     get 'login', to: 'user_sessions#new'
     post 'login', to: 'user_sessions#create'
     post 'logout', to: 'user_sessions#destroy'
-    get 'starter', to: 'dashboards#index'
+    get 'starter', to: 'dashboards#index', as: :root
   end
 
   get 'login', to: 'user_sessions#new'

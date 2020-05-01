@@ -8,6 +8,9 @@ ja:
         password: 'パスワード'
       create:
         success: 'ログインしました'
-        warning: '権限がありません'
+        warning: 'ログインに失敗しました'
       destroy:
         success: 'ログアウトしました'
+    dashboards:
+      index:
+        title: 'ダッシュボード'
