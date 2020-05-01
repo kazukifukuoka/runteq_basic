@@ -1,0 +1,8 @@
+ja:
+  admin:
+    user_sessions:
+      create:
+        success: 'ログインしました'
+        warning: '権限がありません'
+      destroy:
+        success: 'ログアウトしました'

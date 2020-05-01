@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_boards, through: :bookmarks, source: :board
   mount_uploader :avatar, UserImageUploader
+  enum role: { general: 0, admin: 1 }
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
